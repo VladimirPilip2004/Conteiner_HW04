@@ -1,0 +1,40 @@
+vboxuser@vbwin7:~$ sudo su
+[sudo] пароль для vboxuser: 
+root@vbwin7:/home/vboxuser# mkdir dockerfiles_hw_4
+root@vbwin7:/home/vboxuser# nano Task_1
+root@vbwin7:/home/vboxuser# nano Dockerfile
+root@vbwin7:/home/vboxuser# docker build -t images_task_4 .
+Sending build context to Docker daemon  2.804GB
+Step 1/4 : FROM alpine:latest
+latest: Pulling from library/alpine
+31e352740f53: Pull complete 
+Digest: sha256:82d1e9d7ed48a7523bdebc18cf6290bdb97b82302a8a9c27d4fe885949ea94d1
+Status: Downloaded newer image for alpine:latest
+ ---> c1aabb73d233
+Step 2/4 : FROM python:3
+3: Pulling from library/python
+d52e4f012db1: Pull complete 
+7dd206bea61f: Pull complete 
+2320f9be4a9c: Pull complete 
+6e5565e0ba8d: Pull complete 
+d3797e13cc41: Pull complete 
+70f90dfe001b: Pull complete 
+bd75605de417: Extracting     244B/244B
+bd75605de417: Pull complete 
+3d0e1a4b14bc: Pull complete 
+Digest: sha256:d73088ce13d5a1eec1dd05b47736041ae6921d08d2f240035d99642db98bc8d4
+Status: Downloaded newer image for python:3
+ ---> c0e63845ae98
+Step 3/4 : ADD Task_1 /
+ ---> b8d4247f6f2e
+Step 4/4 : CMD [ "python", "./Task_1" ]
+ ---> Running in ebfffd5049c9
+Removing intermediate container ebfffd5049c9
+ ---> 58a216f66a02
+Successfully built 58a216f66a02
+Successfully tagged images_task_4:latest
+root@vbwin7:/home/vboxuser# docker run -it images_task_4
+Введите число N: 4
+Список состоит из: [1, 2, 3, 4]
+Сумма чётных чисел от 1 до 4 равна: 6
+root@vbwin7:/home/vboxuser# 
